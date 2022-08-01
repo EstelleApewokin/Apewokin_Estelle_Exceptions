@@ -10,33 +10,77 @@ using namespace std;
 
 char character(char, int);
 
-
 int main() {
-	char input = 'C';
-	int offset = 3;
+	char input = 'a';
+	int offset = 1;
 	
+	//try/catch statements to catch the exceptions
 	try {
-		cout << character(input, offset);
+		cout << character(input, offset) << endl; 
 	}
-	catch (string) {
+	catch (string exception1) { //different type exceptions to indicate which exception is thrown
+		cout << exception1;
+		cout << "Ending program.\n";
+	}
+	catch (int exception2) {
+		cout << "ERROR: invalid range.\n Ending program.\n";
+	}
 
+	offset = -1;
+
+	try {
+		cout << character(input, offset) << endl;
 	}
+	catch (string exception1) {
+		cout << exception1;
+		cout << "Ending program.\n";
+	}
+	catch (int exception2) {
+		cout << "ERROR: invalid range.\n Ending program.\n";
+	}
+
+	input = 'Z';
+
+	try {
+		cout << character(input, offset) << endl;
+	}
+	catch (string exception1) {
+		cout << exception1;
+		cout << "Ending program.\n";
+	}
+	catch (int exception2) {
+		cout << "ERROR: invalid range.\n Ending program.\n";
+	}
+
+	input = '?';
+	offset = 5;
+
+	try {
+		cout << character(input, offset) << endl;
+	}
+	catch (string exception1) {
+		cout << exception1;
+		cout << "Ending program.\n";
+	}
+	catch (int exception2) {
+		cout << "ERROR: invalid range.\n Ending program.\n";
+	}
+
 	return 0;
-
 }
 
 char character(char start, int offset) {
 	char end;
 
 	if (!isalpha(start)) {
-		string invalidCharacterException = "ERROR: starting letter is not a letter A-Z.\n";
+		string invalidCharacterException = "ERROR: invalid character\n"; //string exception
 		throw invalidCharacterException;
 	}
 	
 	end = start + offset;
 
 	if (!isalpha(end)) {
-		string invalidRangeException = "ERROR: target letter is not a letter A-Z.\n";
+		int invalidRangeException = -1; //integer exception
 		throw invalidRangeException;
 	}
 
